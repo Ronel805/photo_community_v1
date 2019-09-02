@@ -226,6 +226,7 @@ public class Model {
                     @Override
                     public void onComplete(User user) {
                         post.setUserPhoto(user.getProfileImage());
+                        post.setEmail(user.getEmail());
                         if (uri!=null)
                             post.setPicture(uri);
                         modelFirebase.updatePost(post, new basiconCompleteListener() {
