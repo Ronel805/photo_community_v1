@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Home"
-    android:background="@drawable/back"
+    android:background="@drawable/newback"
     >
 
     <!-- TODO: Update blank fragment layout -->

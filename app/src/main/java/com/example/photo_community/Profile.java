@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,7 @@ public class Profile extends Fragment {
     LinearLayoutManager mLayoutManeger;
     PostListAdapter mPostListAdapter;
     ProfileViewModel viewData;
+    TextView email;
     LiveData<List<Post>> liveData;
     public Profile() {
         // Required empty public constructor
@@ -61,6 +63,7 @@ public class Profile extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         logout = v.findViewById(R.id.profileLogout);
+        email = v.findViewById(R.id.profile_email);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +83,10 @@ public class Profile extends Fragment {
         mPostsListRv.setHasFixedSize(true);
         mPostListAdapter = new PostListAdapter(viewData.getmData().getValue(), this);
         mPostsListRv.setAdapter(mPostListAdapter);
+        viewData.getUser().observe(this, user -> {
+            email.setText(user.getEmail());
+        });
+        viewData.getUserById(viewData.getConnectedUserId());
 
         return  v;
     }

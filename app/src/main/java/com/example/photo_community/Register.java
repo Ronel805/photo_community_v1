@@ -97,7 +97,6 @@ public class Register extends Fragment {
                     });
                 } else
                 if ( password.length() <6){showMessage("please enter 6 digits password or longer");}
-                    showMessage("please enter all parameters");
             }
         });
         profileImage.setOnClickListener(new View.OnClickListener() {

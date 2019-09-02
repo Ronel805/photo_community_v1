@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".new_picture"
-    android:background="@drawable/back">
+    android:background="@drawable/newback">
 
     <EditText
         android:id="@+id/newPictureTitle"

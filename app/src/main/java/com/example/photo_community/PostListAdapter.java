@@ -72,6 +72,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
     class PostViewHolder extends RecyclerView.ViewHolder{
         ImageView mUserPhoto, mPicture ;
         TextView mTitle;
+        TextView userEmail;
         RecyclerView mCommentsListRv;
         LinearLayoutManager mLayoutManager;
         CommentListAdapter mCommentListAdapter;
@@ -80,6 +81,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
         EditText content;
         List<Comment> mData = new LinkedList<>();
         CommentViewModel viewData;
+        HomeViewModel homeViewModel;
         LiveData<List<Comment>> liveData;
 
         public PostViewHolder(@NonNull View itemView) {
@@ -92,6 +94,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
             btn = itemView.findViewById(R.id.row_post_add_comment_btn);
             deletePost = itemView.findViewById(R.id.row_post_delete_post);
             updatePost = itemView.findViewById(R.id.row_post_updata_post);
+            userEmail = itemView.findViewById(R.id.row_post_user_email);
 
 
             mCommentsListRv = itemView.findViewById(R.id.recycler_view_comments);
@@ -99,6 +102,8 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
             mCommentsListRv.setLayoutManager(mLayoutManager);
             mCommentsListRv.setHasFixedSize(true);
             mCommentListAdapter = new CommentListAdapter(mData);
+
+            homeViewModel = ViewModelProviders.of(holdingFragment).get(HomeViewModel.class);
 
 
         }
@@ -113,6 +118,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
             if (mTitle != null)
                 mTitle.setText(title);
             mCommentsListRv.setAdapter(mCommentListAdapter);
+            userEmail.setText(post.getEmail());
 
             viewData = ViewModelProviders.of(holdingFragment).get(CommentViewModel.class);
             viewData.setListener(post.getPostKey());
@@ -144,7 +150,7 @@ public class PostListAdapter extends RecyclerView.Adapter<PostListAdapter.PostVi
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Comment comment = new Comment("10",content.getText().toString(), MyApp.getCurrentUserId(), post.getPostKey(), "user image");
+                    Comment comment = new Comment(content.getText().toString(), MyApp.getCurrentUserId(), post.getPostKey(), "user image", "email");
                     Model.instance.addComment(comment, new Model.addCommentListener() {
 
                         @Override

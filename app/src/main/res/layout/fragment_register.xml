@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/newback"
     tools:context=".Register">
 
 
@@ -65,7 +65,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_blue_dark"
         android:text="Register"
         android:textColor="@android:color/white"
         android:textSize="14sp"
@@ -83,7 +83,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_blue_dark"
         android:text="to login"
         android:textColor="@android:color/white"
         android:textSize="14sp"

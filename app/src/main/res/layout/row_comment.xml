@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/back"    >
+    android:background="@drawable/newback"    >
 
     <ImageView
         android:id="@+id/row_comment_image"
@@ -13,6 +13,8 @@
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -23,11 +25,21 @@
         android:layout_height="19dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="the comment"
         android:textColor="#969595"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/row_comment_image" />
+
+    <TextView
+        android:id="@+id/row_comment_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/row_comment_comment_text"
+        app:layout_constraintStart_toEndOf="@+id/row_comment_image"
+        app:layout_constraintTop_toTopOf="@+id/row_comment_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

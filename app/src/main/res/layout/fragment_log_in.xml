@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LogIn"
-    android:background="@drawable/back">
+    android:background="@drawable/newback">
 
     <EditText
         android:id="@+id/logIn_email"
@@ -52,7 +52,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_blue_dark"
         android:text="log in"
         android:textColor="@android:color/white"
         android:textSize="14sp"
@@ -69,7 +69,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_blue_dark"
         android:text="Sign Up"
         android:textColor="@android:color/white"
         android:textSize="14sp"

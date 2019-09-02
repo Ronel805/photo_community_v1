@@ -8,6 +8,7 @@ import java.util.List;
 
 public class HomeViewModel extends ViewModel {
     MutableLiveData<List<Post>> mData = new MutableLiveData<>();
+
     public HomeViewModel(){
         Model.instance.getAllPosts(new Model.GetAllPostsListener() {
             @Override
@@ -23,6 +24,4 @@ public class HomeViewModel extends ViewModel {
     public void setmData(List<Post> mData) {
         this.mData.setValue(mData);
     }
-
-
 }

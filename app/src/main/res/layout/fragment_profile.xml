@@ -6,9 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Profile"
-    android:background="@drawable/back">
+    android:background="@drawable/newback">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_width="228dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/profileLogout"

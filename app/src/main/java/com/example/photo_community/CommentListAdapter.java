@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.photo_community.Comment;
 
 import java.util.List;
 
@@ -40,12 +39,7 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CommentViewHolder holder, int position) {
-        String content,userImage,username;
-        Object timestamp;
-
-        content = mData.get(position).getContent();
-        userImage = mData.get(position).getUimg();
-        holder.bind(content, userImage);
+        holder.bind( mData.get(position));
 
     }
 
@@ -57,20 +51,25 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
     static class CommentViewHolder extends RecyclerView.ViewHolder{
         ImageView mUserImage;
         TextView mContent;
+        TextView email;
 
         public CommentViewHolder(@NonNull View itemView) {
             super(itemView);
             mUserImage = itemView.findViewById(R.id.row_comment_image);
             mContent = itemView.findViewById(R.id.row_comment_comment_text);
+            email = itemView.findViewById(R.id.row_comment_email);
 
 
 
         }
-        public void bind(String content, String userImage){
-            if (userImage != null)
-                Glide.with(LogInAndRegister.context).load(userImage).into(mUserImage);
-            if (mContent != null)
-                mContent.setText(content);
+        public void bind(Comment comment){
+            if (comment.getUimg() != null)
+                Glide.with(LogInAndRegister.context).load(comment.getUimg()).into(mUserImage);
+            if (comment.getContent() != null)
+                mContent.setText(comment.getContent());
+            if (comment.getUserEmail() != null){
+                email.setText(comment.getUserEmail());
+            }
 
 
         }

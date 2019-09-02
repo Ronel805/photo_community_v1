@@ -16,28 +16,30 @@ public class Post {
     private String picture;
     private String userId;
     private String userPhoto;
-
+    private String email;
     private boolean wasDeleted;
 
 
     @Ignore
-    public Post(String postKey, String title, String picture, String userId, String userPhoto, Date timeStamp, boolean wasDeleted) {
+    public Post(String postKey, String title, String picture, String userId, String userPhoto, Date timeStamp, boolean wasDeleted, String email) {
         this.postKey = postKey;
         this.title = title;
         this.picture = picture;
         this.userId = userId;
         this.userPhoto = userPhoto;
         this.wasDeleted = wasDeleted;
+        this.email = email;
     }
 
     @Ignore
-    public Post(String postKey, String title, String picture, String userId, String userPhoto,boolean wasDeleted) {
+    public Post(String postKey, String title, String picture, String userId, String userPhoto,boolean wasDeleted, String email) {
         this.postKey = postKey;
         this.title = title;
         this.picture = picture;
         this.userId = userId;
         this.userPhoto = userPhoto;
         this.wasDeleted = wasDeleted;
+        this.email = email;
     }
 
     // make sure to have an empty constructor inside ur model class
@@ -90,4 +92,12 @@ public class Post {
     }
 
     public void setUserPhoto(String profileImage) { this.userPhoto=profileImage;    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

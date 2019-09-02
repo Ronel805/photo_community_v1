@@ -114,5 +114,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/row_post_delete_post" />
 
+    <TextView
+        android:id="@+id/row_post_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/row_post_uploader_image"
+        app:layout_constraintStart_toEndOf="@+id/row_post_uploader_image"
+        app:layout_constraintTop_toTopOf="@+id/row_post_uploader_image" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

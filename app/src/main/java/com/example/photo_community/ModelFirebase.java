@@ -235,9 +235,9 @@ public class ModelFirebase {
     //comments!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public String addComment(Comment comment, Model.StoreToLocalListener listener){
         String postKey = comment.getPostKey();
-        String key = db.collection("Posts").document(postKey).collection("Comments").document().getId();
+        String key = db.collection("Comments").document().getId();
         comment.setCommentId(key);
-        db.collection("Posts").document(postKey).collection("Comments").document().set(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+        db.collection("Comments").document(key).set(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 listener.onComplete(key);

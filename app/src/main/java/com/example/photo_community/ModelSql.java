@@ -6,7 +6,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {Post.class, Comment.class, User.class}, version = 15, exportSchema = false)
+@Database(entities = {Post.class, Comment.class, User.class}, version = 19, exportSchema = false)
 @TypeConverters({Converters.class})
 abstract class AppLocalDbRepository extends RoomDatabase {
     public abstract PostDao PostDao();

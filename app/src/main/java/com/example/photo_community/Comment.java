@@ -3,12 +3,11 @@ package com.example.photo_community;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 //import com.google.firebase.database.ServerValue;
 //import com.google.firebase.firestore.ServerTimestamp;
-
-import java.util.Date;
 
 @Entity
 public class Comment {
@@ -20,18 +19,29 @@ public class Comment {
     String uid;
     String postKey;
     String userImage;
+    String userEmail;
 
 
     public Comment() {
     }
 
-    public Comment(String commentId, String content, String uid, String postKey ,String uimg) {
+    @Ignore
+    public Comment(String commentId, String content, String uid, String postKey ,String uimg, String userEmail) {
         this.commentId = commentId;
         this.content = content;
         this.uid = uid;
         this.postKey = postKey;
         this.userImage = uimg;
+        this.userEmail = userEmail;
+    }
 
+    @Ignore
+    public Comment(String content, String uid, String postKey ,String uimg, String userEmail) {
+        this.content = content;
+        this.uid = uid;
+        this.postKey = postKey;
+        this.userImage = uimg;
+        this.userEmail = userEmail;
     }
 
 
@@ -74,5 +84,13 @@ public class Comment {
 
     public void setPostKey(String postKey) {
         this.postKey = postKey;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

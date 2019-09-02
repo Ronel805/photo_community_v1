@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ProfileViewModel extends ViewModel {
     MutableLiveData<List<Post>> mData = new MutableLiveData<>();
+    static MutableLiveData<User> user = new MutableLiveData<>();
+
     public ProfileViewModel(){
 
     }
@@ -26,5 +28,27 @@ public class ProfileViewModel extends ViewModel {
 
     public void setmData(List<Post> mData) {
         this.mData.setValue(mData);
+    }
+
+    public void getUserById(String id){
+        Model.instance.getUserById(id, new Model.getUserListener() {
+            @Override
+            public void onComplete(User u) {
+                user.setValue(u);
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
+    }
+
+    public LiveData<User> getUser(){
+        return user;
+    }
+
+    public String getConnectedUserId(){
+        return Model.instance.getCurrentUserId();
     }
 }

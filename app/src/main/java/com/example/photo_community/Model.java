@@ -61,6 +61,22 @@ public class Model {
         });
     }
 
+    public void getUserById(final String userId, final Model.getUserListener listener){
+        modelFirebase.getUserById(userId, new getUserListener() {
+            @Override
+            public void onComplete(User u) {
+                listener.onComplete(u);
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        } );
+
+
+    }
+
     public void login(String sEmail, String sPassword, basicListener listener) {
         modelFirebase.login(sEmail, sPassword, listener);
     }
@@ -165,6 +181,7 @@ public class Model {
                     public void onComplete(User user) {
                         post.setUserPhoto(user.getProfileImage());
                         post.setPicture(uri);
+                        post.setEmail(user.getEmail());
                         modelFirebase.addPost(post, new addPostListener() {
                             @Override
                             public void onComplete(Post post) {
@@ -268,10 +285,11 @@ public class Model {
 
     public void addComment(final Comment comment, final addCommentListener listener)
     {
-        UserAsyncDao.getUserById(new addUserListener() {
+        modelFirebase.getUserById(Model.instance.getCurrentUserId(), new getUserListener() {
             @Override
-            public void onComplete(User user) {
-                comment.setUimg(user.getProfileImage());
+            public void onComplete(User u) {
+                comment.setUimg(u.getProfileImage());
+                comment.setUserEmail(u.getEmail());
                 modelFirebase.addComment(comment, new StoreToLocalListener() {
                     @Override
                     public void onComplete(String key) {
@@ -281,9 +299,11 @@ public class Model {
                     }
                 });
             }
+            @Override
+            public void onError(Exception e) {
+
+            }
         });
-
-
     }
 
 }
