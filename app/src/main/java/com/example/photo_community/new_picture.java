@@ -73,6 +73,7 @@ public class new_picture extends Fragment {
                         }
                     });
                 }
+                if (!pickedImage){showMessage("Please add image");}
             }
         });
 
