@@ -10,7 +10,7 @@ import androidx.room.Query;
 
 @Dao
 interface UserDao {
-    @Query("select * from User where userId = :id")
+    @Query("SELECT * FROM User WHERE userId = :id")
     User getById(String id);
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(User users);
@@ -43,10 +43,9 @@ public class UserAsyncDao{
         new AsyncTask<String, String, User>() {
             @Override
             protected User doInBackground(String... strings) {
-//                User user =
-                return ModelSql.db.UserDao().getById(MyApp.getCurrentUserId());
-//                return user;
-//                return ModelSql.db.userDao().getUser(userKey);
+                String currentid = MyApp.getCurrentUserId();
+                User user = ModelSql.db.UserDao().getById(currentid);
+                return user;
             }
 
             @Override

@@ -43,8 +43,7 @@ public class LogIn extends Fragment {
             public void onClick(View view) {
                 String sEmail = email.getText().toString();
                 String sPassword = password.getText().toString();
-                if (email != null && password != null && sEmail.length() != 0 && sPassword.length() != 0 ) {
-
+                if (email != null && password != null && !sEmail.isEmpty() && !sPassword.isEmpty()) {
                     Model.instance.login(sEmail, sPassword, new Model.basicListener(){
 
                         @Override

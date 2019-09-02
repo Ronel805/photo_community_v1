@@ -232,34 +232,17 @@ public class ModelFirebase {
         });
     }
 
-
-    void addComment(Comment p, final CommentRepository.InsertCommentListener listener) {
-        String postKey = p.getPostId();
-        Log.d("PostKey", "addComment: " + postKey);
-        final DocumentReference doc = db.collection("Posts").document(postKey).collection("Comments").document();
-        String key = doc.getId();
-        p.setCommentKey(key);
-        doc.set(p).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                listener.onComplete(task.isSuccessful());
-            }
-        })
-    }
-
-
     //comments!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public String addComment(Comment comment, Model.StoreToLocalListener listener){
         String postKey = comment.getPostKey();
-//                db.collection("Comments").document().getId();
-//        comment.setCommentId(postKey);
-//        db.collection("Comments").document(comment.getCommentId()).set(comment).addOnSuccessListener(new OnSuccessListener<Void>() {
         String key = db.collection("Posts").document(postKey).collection("Comments").document().getId();
         comment.setCommentId(key);
-//            @Override postKeySuccess(Void aVoid) {
-//            listener.onComplete(key);
-//        }
-    });
+        db.collection("Posts").document(postKey).collection("Comments").document().set(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                listener.onComplete(key);
+            }
+        });
         return key;
     }
 
