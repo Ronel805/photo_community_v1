@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    android:label="Home"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.photo_community.Home"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_profile"
+            app:destination="@id/profile_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.example.photo_community.Profile"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_fragment_to_newPictureFragment"
+            app:destination="@id/new_picture_fragment" />
+        <action
+            android:id="@+id/action_profile_fragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/new_picture_fragment"
+        android:name="com.example.photo_community.new_picture"
+        android:label="Add Post"
+        tools:layout="@layout/fragment_new_picture" />
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.photo_community.updateFragment"
+        android:label="Update"
+        tools:layout="@layout/fragment_update">
+        <argument
+            android:name="postKey"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="picUri"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>
